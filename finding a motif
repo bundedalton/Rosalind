@@ -1,0 +1,24 @@
+def get_sequences():
+    input_strings = input("Enter DNA strand and motif to search for separated by a comma: ").split(",")
+    
+    
+    return [s.strip() for s in input_strings]   
+   
+def find_motif(sequences):
+    dna_string = sequences[0]
+    motif = sequences[1]
+    
+    motif_positions = []
+    
+    for i in range(len(dna_string) - len(motif) + 1):
+        if dna_string[i:i+len(motif)] == motif:
+            motif_positions.append(i + 1) # +1 for 1-based indexing
+            
+    return motif_positions
+
+def main():
+    sequences = get_sequences()
+    motif_positions = find_motif(sequences)
+    print("Motif found at positions: ", motif_positions)
+if __name__ == "__main__":    main()
+
